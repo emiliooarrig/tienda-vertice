@@ -4,18 +4,20 @@
     box-sizing: border-box;
 }
 
-.contenedor{
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; */
-
-    background-color: rgb(255, 231, 199);
-    height: 600px;
-    width: 100%;
+.button-rosa{
+    background-color: #FF4D80;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
 }
 
-.contenedor h1{
-    font-size: 150px;
+.icon-amarillo{
+    color: #FFD966;
 }
 
+.button-amarillo{
+    background-color: #FFD966;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
