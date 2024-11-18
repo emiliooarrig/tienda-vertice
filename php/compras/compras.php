@@ -33,7 +33,9 @@ include 'config/conection.php';
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../html/faq/faq.html"> FAQ </a>
+                    </li>
                     <li class="nav-item-">
                         <a href="../login/login.php" class="nav-link"> <i class="bi bi-person-circle"></i></a>
                     </li>
