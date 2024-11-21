@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "tienda-vertice";
+$database = "TiendaVertice";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
