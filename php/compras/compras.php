@@ -1,5 +1,6 @@
 <?php
 include '../config/conection.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +36,15 @@ include '../config/conection.php';
                     <li class="nav-item">
                         <a class="nav-link" href="../../html/faq/faq.html"> FAQ </a>
                     </li>
-                    <li class="nav-item-">
-                        <a href="../login/login.php" class="nav-link"> <i class="bi bi-person-circle"></i></a>
-                    </li>
+                    <?php if (isset($_SESSION['username'])) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../config/logout.php"><i class="bi bi-box-arrow-right"></i> <?php echo htmlspecialchars($_SESSION['username']); ?></a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../login/login.php"><i class="bi bi-person-circle"></i></a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -45,7 +52,7 @@ include '../config/conection.php';
 
 
     <div class="container-fluid text-center p-3 mb-5" style="background-color: #FF4D80;">
-        <h1 class="text-light"> Los productos:  </h1>
+        <h1 class="text-light"> Los productos: </h1>
     </div>
 
     <div class="container">
@@ -64,8 +71,8 @@ include '../config/conection.php';
                     <!-- Card de Bootstrap -->
                     <div class="col">
                         <div class="card h-100">
-                        <img src="../../img/productos/<?php echo $row['fotos']; ?>" class="card-img-top img-fluid w-50"
-                                    alt=" <?php echo $row['nombre']; ?>">
+                            <img src="../../img/productos/<?php echo $row['fotos']; ?>" class="card-img-top img-fluid w-50"
+                                alt=" <?php echo $row['nombre']; ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $nombre; ?></h5> <!-- Título -->
                                 <p class="card-text"><strong>Precio:</strong> $<?php echo $precio; ?></p> <!-- Precio -->
