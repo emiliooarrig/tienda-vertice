@@ -30,11 +30,19 @@
                         <a class="nav-link" href="../../html/contacto/contacto.html">Contacto</a>
                     </li>
                     <li class="nav-item-">
-                        <a href="../../html/faq/faq.html" class="nav-link active"> FAQ </a>
+                        <a href="../../html/faq/faq.html" class="nav-link"> FAQ </a>
                     </li>
-                    <li class="nav-item-">
-                        <a href="" class="nav-link"> <i class="bi bi-person-circle"></i></a>
-                    </li>
+                    <?php if (isset($_SESSION['username'])) { ?>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../config/logout.php"><i class="bi bi-box-arrow-right"></i> <?php echo htmlspecialchars($_SESSION['username']); ?> </a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="../login/login.php"><i class="bi bi-person-circle"></i></a>
+                        </li>
+                    <?php } ?>
+
+                    
                 </ul>
             </div>
         </div>
@@ -48,6 +56,13 @@
                 <div class="alert alert-danger" role="alert">
                     Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.
                 </div>
+            <?php endif; ?>
+
+
+            <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
+                <div class="alert alert-success" role="alert">
+                    Usuario creado exitosamente :)
+                </div>            
             <?php endif; ?>
 
             <form action="validar_user.php" method="POST">
@@ -64,7 +79,7 @@
                 </div>
 
                 <div class="input-group">
-                    <a class="link" href="../admin/agregar_user/agregar_user.php"> ¿Eres nuevo? Crea una cuenta aquí </a>
+                    <a class="link" href="../../html/agregar_user/agregar_user.html"> ¿Eres nuevo? Crea una cuenta aquí </a>
                 </div>
                 <!-- Login Button -->
                 <div class="d-grid mt-3">
