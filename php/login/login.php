@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- <link rel="stylesheet" href="fondo.css"> -->
     <title>Login</title>
 </head>
 
@@ -21,7 +22,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../../index.html">Inicio </a>
+                        <a class="nav-link" aria-current="page" href="../../index.php">Inicio </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../../php/compras/compras.php">Comprar</a>
@@ -34,7 +35,7 @@
                     </li>
                     <?php if (isset($_SESSION['username'])) { ?>
                         <li class="nav-item active">
-                            <a class="nav-link" href="../config/logout.php"><i class="bi bi-box-arrow-right"></i> <?php echo htmlspecialchars($_SESSION['username']); ?> </a>
+                            <a class="nav-link" href="../config/logout.php"><i class="bi bi-box-arrow-right"></i> <?php echo $_SESSION['username']; ?> </a>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
@@ -57,7 +58,6 @@
                     Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.
                 </div>
             <?php endif; ?>
-
 
             <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
                 <div class="alert alert-success" role="alert">
