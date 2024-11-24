@@ -23,13 +23,13 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid">
         <div class="row">
             <!-- Columna izquierda: Panel del administrador -->
-            <div class="col-md-3 bg-light p-4 rounded" style="height: 100vh;">
-                <h1 class="fs-4">Bienvenid@, <span class="text-primary"><?= htmlspecialchars($_SESSION['username']); ?></span></h1>
+            <div class="col-md-3 p-4 rounded text-center mh-100" style="background-color: #FF4D80;">
+                <h1 class="fs-4 text-light">Bienvenid@, <span class="text-primary"><?php echo $_SESSION['username']; ?></span></h1>
                 <img src="../../img/user.png" alt="" class="img img-fluid w-50">
-                <div class="row row-cols-1 justify-content-center">
+                <div class="row row-cols-1 row-cols-md-2 justify-content-center">
                     <div class="col">
                         <a href="agregar/agregar_art.php" class="btn btn-success btn-block my-2">Agregar artículos</a>
                     </div>
@@ -39,13 +39,17 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="col">
-                        <a href="../config/logout.php" class="btn btn-danger btn-block my-2">Cerrar sesión</a>
+                        <a href="../config/logout.php" class="btn btn-danger btn-block my-2">Cerrar sesión actual </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="" class="btn btn-primary btn-block my-2"> Historial de compras </a>
                     </div>
                 </div>
             </div>
 
             <!-- Columna derecha: Despliegue de artículos -->
-            <div class="col-md-9">
+            <div class="col-md-9 mt-2">
                 <h2 class="text-center mb-4">Artículos en Almacén</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <?php while ($row = mysqli_fetch_array($result)) { ?>
@@ -61,12 +65,12 @@ if (!isset($_SESSION['username'])) {
                                     <p class="card-text">Cantidad en almacén: <?php echo $row['cantidad_en_almacen']; ?></p>
                                     <div class="d-flex justify-content-between mt-3">
                                         <!-- Botón para editar -->
-                                        <a href="editar_art.php?id=<?php echo $row['id_articulo']; ?>"
+                                        <a href="editar_art.php?id=<?php echo $row['id_producto']; ?>"
                                             class="btn btn-warning btn-sm">Editar</a>
 
                                         <!-- Botón para eliminar -->
                                         <a href="eliminar.php?id=<?php echo $row['id_producto']; ?>"
-                                            class="btn btn-danger btn-sm">Eliminar</a>
+                                            class="btn btn-danger btn-sm"> Eliminar </a>
                                     </div>
                                 </div>
                             </div>
