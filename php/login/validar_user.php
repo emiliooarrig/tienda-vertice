@@ -22,12 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($resultUser) === 1) {
         $row = mysqli_fetch_assoc($resultUser);
         if (password_verify($password, $row['contrasena'])) {
-            echo "Entra";
             $_SESSION['user_id'] = $row['id_usuario'];
             $_SESSION['username'] = $row['nombre_usuario'];
             $_SESSION['role'] = 'user';
             header('Location: ../compras/compras.php');
             exit();
+        }else{
+            header('Location: login.php?status=error');
         }
     } elseif (mysqli_num_rows($resultAdmin) === 1) {
         $row = mysqli_fetch_assoc($resultAdmin);
@@ -37,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['role'] = 'admin';
             header('Location: ../admin/admin.php');
             exit();
+        }else{
+            header('Location: login.php?status=error');
         }
     } else {
         header('Location: login.php?status=error');
