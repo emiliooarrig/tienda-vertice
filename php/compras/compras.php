@@ -11,6 +11,7 @@ session_start();
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title> Productos </title>
 </head>
 
@@ -25,20 +26,30 @@ session_start();
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../../index.html">Inicio </a>
+                        <a class="nav-link" aria-current="page" href="../../index.php"> Inicio </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../html/contacto/contacto.html">Contacto</a>
+                        <a class="nav-link" href="../contacto/contacto.php">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../html/faq/faq.html"> FAQ </a>
+                        <a class="nav-link" href="../faq/faq.php"> FAQ </a>
                     </li>
                     <?php if (isset($_SESSION['username'])) { ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../config/logout.php"><i class="bi bi-box-arrow-right"></i> <?php echo htmlspecialchars($_SESSION['username']); ?></a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Mi cuenta <i class="bi bi-person-fill-check"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../miperfil/miperfil.php"> Mi perfil <i class="bi bi-person-circle"></i> </a></li>
+                                <li><a class="dropdown-item" href="../carrito.php"> Mi carrito <i class="bi bi-cart"></i></a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="../config/logout.php"> Cerrar sesión <i class="bi bi-x-lg"></i> </a></li>
+                            </ul>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
@@ -65,6 +76,7 @@ session_start();
                 while ($row = mysqli_fetch_assoc($result)) {
                     // Variables para los datos del artículo
                     $nombre = $row['nombre'];
+                    $id = $row['id_producto'];
                     $precio = $row['precio'];
                     $cantidad = $row['cantidad_en_almacen'];
             ?>
@@ -75,11 +87,12 @@ session_start();
                                 alt=" <?php echo $row['nombre']; ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $nombre; ?></h5> <!-- Título -->
-                                <p class="card-text"><strong>Precio:</strong> $<?php echo $precio; ?></p> <!-- Precio -->
-                                <p class="card-text"><strong>Stock:</strong> <?php echo $cantidad; ?></p> <!-- Cantidad -->
+                                <p class="card-text"> <span class="fw-bold"> Precio: </span> $<?php echo $precio; ?></p>
+                                <p class="card-text"> <span class="fw-bold"> Stock: </span> <?php echo $cantidad; ?></p>
                             </div>
-                            <div class="card-footer">
-                                <button class="btn btn-primary">Añadir al carrito</button>
+                            <div class="card-footer justify-content-between">
+                                <a href="../agregar_carrito/agregar_carrito.php?producto_id=<?php echo $id; ?>&cantidad=1" class="btn btn-primary"> Añadir al carrito <i class="bi bi-cart-plus-fill"></i> </a>
+                                <a href="" class="btn btn-warning"> Mas detalles </a>
                             </div>
                         </div>
                     </div>
@@ -90,6 +103,46 @@ session_start();
             }
             ?>
         </div>
+
+        <?php if (isset($_GET['status']) && $_GET['status'] === 'success') {
+            echo "<script> Swal.fire({
+                title: '¡Exitoso!',
+                text: 'El producto se agregó correctamente',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })</script>";
+        }
+        ?>
+
+        <?php if (isset($_GET['status']) && $_GET['status'] === 'error') {
+            echo "<script> Swal.fire({
+            title: '¡Error!',
+            text: 'El producto no se agregó al carrito',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })</script>";
+        }
+        ?>
+
+        <?php if (isset($_GET['status']) && $_GET['status'] === 'update') {
+            echo "<script> Swal.fire({
+            title: '¡Correcto!',
+            text: 'Se actualizo la cantidad en el carrito ',
+            icon: 'info',
+            confirmButtonText: 'Ok'
+        })</script>";
+        }
+        ?>
+
+        <?php if (isset($_GET['status']) && $_GET['status'] === 'inserted') {
+            echo "<script> Swal.fire({
+            title: '¡Correcto!',
+            text: 'Pedido confirmado',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        })</script>";
+        }
+        ?>
 
     </div>
 
