@@ -1,6 +1,7 @@
 <?php
 include 'config/conection.php';
 session_start();
+$mensaje='';
 ?>
 
 <!DOCTYPE html>
@@ -25,16 +26,16 @@ session_start();
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../../index.php"> Inicio </a>
+                        <a class="nav-link" aria-current="page" href="../index.php"> Inicio </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Comprar</a>
+                        <a class="nav-link" href="compras/compras.php">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../contacto/contacto.php">Contacto</a>
+                        <a class="nav-link" href="contacto/contacto.php">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../faq/faq.php"> FAQ </a>
+                        <a class="nav-link" href="faq/faq.php"> FAQ </a>
                     </li>
                     <?php if (isset($_SESSION['username'])) { ?>
                         <li class="nav-item dropdown">
@@ -43,11 +44,11 @@ session_start();
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="miperfil/miperfil.php"> Mi perfil </a></li>
-                                <li><a class="dropdown-item" href="../carrito.php"> Mi carrito <i class="bi bi-cart"></i></a></li>
+                                <li><a class="dropdown-item" href="#"> Mi carrito <i class="bi bi-cart"></i></a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../config/logout.php"> Cerrar sesión </a></li>
+                                <li><a class="dropdown-item" href="config/logout.php"> Cerrar sesión </a></li>
                             </ul>
                         </li>
                     <?php } else { ?>
@@ -111,7 +112,7 @@ session_start();
                                         </td>
                                         <td>$<?php echo number_format($total, 2); ?></td>
                                         <td>
-                                            <a href="compras/eliminar_producto.php?producto_id=<?php echo $producto_id; ?>"
+                                            <a href="agregar_carrito/eliminar_producto.php?producto_id=<?php echo $producto_id; ?>"
                                                 class="btn btn-danger">
                                                 <i class="bi bi-trash"></i>
                                             </a>
@@ -134,23 +135,36 @@ session_start();
             <button type="submit" class="btn btn-success">Confirmar compra</button>
         </form>
 
-        <?php if (isset($_GET['status']) && $_GET['status'] === 'inserted') {
+        <!-- Mensaje de confirmacion -->
+        <?php if (isset($_GET['status']) && $_GET['status'] === 'success') {
+            $mensaje = $_SESSION['mensaje'];
             echo "<script> Swal.fire({
                 title: '¡Exitoso!',
-                text: 'Pedido confirmado',
+                text: '$mensaje',
                 icon: 'success',
                 confirmButtonText: 'Ok'
             })</script>";
         }
         ?>
 
-    </div>
+        <!-- Mensaje de error  -->
+        <?php if (isset($_GET['status']) && $_GET['status'] === 'error') {
+            $mensaje = $_SESSION['mensaje'];
+            echo "<script> Swal.fire({
+                title: '¡Error!',
+                text: '$mensaje',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })</script>";
+        }
+        ?>
 
+    </div>
+    <!-- Script para validar que en los inputs no haya numeros negativos  -->
     <script>
-        // Obtener todos los campos de cantidad
+        
         const cantidadInputs = document.querySelectorAll('.cantidad-input');
 
-        // Agregar un evento 'input' a cada campo
         cantidadInputs.forEach(input => {
             input.addEventListener('input', () => {
                 if (input.value <= 0 || isNaN(input.value)) {
@@ -161,7 +175,6 @@ session_start();
                         text: 'La cantidad debe ser mayor a 0.',
                         confirmButtonText: 'Aceptar'
                     });
-                    // Restablecer el valor al mínimo permitido
                     input.value = 1;
                 }
             });
