@@ -4,7 +4,7 @@ session_start();
 
 $result = mysqli_query($conn, "SELECT * FROM Productos;");
 
-if (!isset($_SESSION['username'])) {
+if (isset($_SESSION['role']) !== 'admin') {
     header('Location: ../login/login.php');
     exit;
 }
