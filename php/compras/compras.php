@@ -91,8 +91,12 @@ session_start();
                                 <p class="card-text"> <span class="fw-bold"> Stock: </span> <?php echo $cantidad; ?></p>
                             </div>
                             <div class="card-footer justify-content-between">
-                                <a href="../agregar_carrito/agregar_carrito.php?producto_id=<?php echo $id; ?>&cantidad=1" class="btn btn-primary"> Añadir al carrito <i class="bi bi-cart-plus-fill"></i> </a>
-                                <a href="" class="btn btn-warning"> Mas detalles </a>
+                                <?php
+                                if ($_SESSION['username']) { ?>
+                                    <a href="../agregar_carrito/agregar_carrito.php?producto_id=<?php echo $id; ?>&cantidad=1" class="btn btn-primary"> Añadir al carrito <i class="bi bi-cart-plus-fill"></i> </a>
+                                <?php } else { ?>
+                                    <a href="#" onclick="solicitarLogin()" class="btn btn-primary"> Añadir al carrito <i class="bi bi-cart-plus-fill"></i> </a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -104,6 +108,7 @@ session_start();
             ?>
         </div>
 
+        <script src="../../js/script.js"></script>
         <?php if (isset($_GET['status']) && $_GET['status'] === 'success') {
             echo "<script> Swal.fire({
                 title: '¡Exitoso!',
