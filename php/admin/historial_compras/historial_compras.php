@@ -58,7 +58,7 @@ session_start();
                             }
                         } else {
                             echo '<tr>
-                            <td colspan="4" class="text-center">No tienes compras en tu historial.</td>
+                            <td colspan="4" class="text-center">No hay compras en el historial.</td>
                             </tr>';
                         }
                     } else {
