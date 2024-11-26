@@ -1,21 +1,24 @@
-<?php
-require '../config/conection.php'; 
+<?php 
+include '../config/conection.php';
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    $id = mysqli_real_escape_string($conn, $_GET['id']);
 
-    $sql = "DELETE FROM Productos WHERE id_producto = $id";
+if(isset($_GET['producto_id'])){
+    $producto_id = $_GET['producto_id'];
+    echo $producto_id;
+    $sql = "DELETE FROM Productos WHERE id_producto=$producto_id";
 
-    if (mysqli_query($conn, $sql)) {
-        //Eliminamos el articulo
-        header("Location: admin.php?status=success&message=" . urlencode("Artículo eliminado correctamente."));
-        exit();
-    } else {
-        header("Location: admin.php?status=error&message=" . urlencode("No se pudo eliminar el artículo con id:" . $id));
-        exit();
+    if(mysqli_query($conn, $sql)){
+        $_SESSION['mensaje'] = 'Producto eliminado exitosamente';
+        header("Location: admin.php?status=success");
+    }else{
+        $_SESSION['mensaje'] = 'No se pudo eliminar el producto';
+        header("Location: admin.php?status=error");
     }
-} else {
-    header("Location: admin.php?status=error&message=" . urlencode("Petición inválida."));
-    exit();
+}else{
+    $_SESSION['mensaje'] = "Algo salió mal"; 
+    header("Location: admin.php?status=error");
+
 }
-?>
+
+mysqli_close($conn);
