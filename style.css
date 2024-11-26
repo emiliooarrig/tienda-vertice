@@ -16,12 +16,21 @@
 }
 
 .button-amarillo{
+    display: inline-block;
+    text-decoration: none;
     background-color: #FFD966;
     color: #fff;
     padding: 15px;
     border-radius: 10px;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.button-amarillo:hover {
+    background-color: #FFC300; 
+    color: #000; 
+    transform: scale(1.1); 
+}
 .texto-rosa{
     color: #FF4D80;
 }
