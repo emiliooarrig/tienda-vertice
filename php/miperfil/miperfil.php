@@ -19,13 +19,14 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../css/fondo.css">
     <title> Mi perfil </title>
 </head>
 
 <body>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row vh-100">
             <!-- Columna izquierda: Panel del administrador -->
             <div class="col-md-3 p-4 rounded text-center mh-100" style="background-color: #FF4D80;">
                 <h1 class="fs-4 text-light">Bienvenid@, <span class="text-primary"><?php echo $_SESSION['username']; ?></span></h1>
@@ -63,10 +64,10 @@ if (!isset($_SESSION['username'])) {
             </div>
 
             <!-- Despliegue del historial de compras -->
-            <div class="col">
-                <table class="table">
+            <div class="col mt-3">
+                <table class="table table-hover table-striped">
                     <thead>
-                        <th> Id compra </th>
+                        <th> ID compra </th>
                         <th> Nombre del producto </th>
                         <th> Cantidad </th>
                     </thead>
@@ -117,6 +118,14 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
     </div>
+
+    <style>
+        @media (max-width: 750px) {
+            .row {
+                height: auto !important;
+            }
+        }
+    </style>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
