@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../style.css">
     <title> FAQ </title>
 </head>
 
@@ -64,43 +65,45 @@
     </div>
 
     <div class="container d-flex flex-column mt-5">
-        <div>
-            <h1> Pregunta 1</h1>
+        <div class="mt-3">
+            <h1> ¿Como realizo mi pedido? </h1>
             <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo architecto, consequuntur odio vero ullam nemo alias soluta 
-                illum pariatur eaque esse molestias totam adipisci error illo voluptatum dolore deleniti molestiae!
+            Para realizar un pedido, selecciona los productos que deseas, 
+            añádelos al carrito y sigue las instrucciones para completar el pago en línea.
             </p>
         </div>
 
-        <div>
-            <h1> Pregunta 1</h1>
+        <div class="mt-3">
+            <h1> ¿Donde recojo mi pedido?</h1>
             <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo architecto, consequuntur odio vero ullam nemo alias soluta 
-                illum pariatur eaque esse molestias totam adipisci error illo voluptatum dolore deleniti molestiae!
+            Los pedidos se recogen en nuestra ubicación específica, indicada al finalizar tu compra. 
+            También recibirás un correo electrónico con la dirección exacta y las instrucciones de recogida.
             </p>
         </div>
 
-        <div>
-            <h1> Pregunta 1</h1>
+        <div class="mt-3">
+            <h1> ¿Puedo enviar a recoger a alguien a recoger mi pedido? </h1>
             <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo architecto, consequuntur odio vero ullam nemo alias soluta 
-                illum pariatur eaque esse molestias totam adipisci error illo voluptatum dolore deleniti molestiae!
+            Sí, puedes enviar a otra persona a recoger tu pedido. Solo asegúrate de 
+            proporcionarles el número de pedido y una copia del correo de confirmación.
             </p>
         </div>
 
-        <div>
-            <h1> Pregunta 1</h1>
+        <div class="mt-3">
+            <h1> ¿Qué métodos de pago aceptan? </h1>
             <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo architecto, consequuntur odio vero ullam nemo alias soluta 
-                illum pariatur eaque esse molestias totam adipisci error illo voluptatum dolore deleniti molestiae!
+            Aceptamos pagos en línea a través de tarjetas de crédito, débito y 
+            otros métodos compatibles con nuestra plataforma de pago, por el momento
+            nuestra pagina solo puede procesar pagos con Paypal y MercadoPago.
             </p>
         </div>
 
-        <div>
-            <h1> Pregunta 1</h1>
+        <div class="mt-3">
+            <h1> ¿Qué hago si tengo un problema con mi pedido? </h1>
             <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo architecto, consequuntur odio vero ullam nemo alias soluta 
-                illum pariatur eaque esse molestias totam adipisci error illo voluptatum dolore deleniti molestiae!
+            Si tienes algún problema con tu pedido, como productos incorrectos o defectuosos, 
+            ponte en contacto con nuestro equipo de soporte lo antes posible. Puedes escribirnos 
+            a <span class="text-primary"> verticemexico@anahuac.mx </span>
             </p>
         </div>
     </div>
@@ -113,7 +116,7 @@
             </div>
             <div class="col mb-2">
                 <p class="mb-1">¿Problemas con tu pedido? Haz click aquí</p>
-                <a href="btn" class="btn button-amarillo"> Problemas</a>
+                <a href="../contacto/contacto.php" class="button-amarillo"> Problemas</a>
             </div>
             <div class="col mb-2">
                 <p class="mb-1">¡Nuestras redes sociales!</p>
