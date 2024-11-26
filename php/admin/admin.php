@@ -86,7 +86,6 @@ if (isset($_SESSION['role']) != 'admin') {
 
     <style>
         @media (max-width: 750px) {
-
             .row {
                 height: auto !important;
             }
