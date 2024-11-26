@@ -103,7 +103,7 @@ session_start();
             <?php
                 } // Fin del while
             } else {
-                echo "<p> No se encontraron artículos :( </p>";
+                echo "<h1> No se encontraron artículos :( </h1>";
             }
             ?>
         </div>
