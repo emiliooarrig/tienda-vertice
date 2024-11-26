@@ -2,7 +2,7 @@
 function confirmDelete(producto_id) {
     Swal.fire({
         title: '¿Estás seguro?',
-        text: `No podrás revertir esta acción. ${producto_id}`,
+        text: `No podrás revertir esta acción.`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
