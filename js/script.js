@@ -14,3 +14,20 @@ function confirmDelete(producto_id) {
         }
     });
 }
+
+
+function solicitarLogin(){
+    Swal.fire({
+        title: 'Atencion',
+        text: `Inicia sesion antes de agregar productos`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Iniciar sesion'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = `../login/login.php`;
+        }
+    });
+}
