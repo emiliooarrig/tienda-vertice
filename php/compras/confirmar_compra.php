@@ -5,12 +5,11 @@ $id_user = $_SESSION['user_id'];
 $_SESSION['mensaje'] = '';
 // Verificar si se recibieron las cantidades desde el formulario
 if (isset($_POST['cantidades']) && is_array($_POST['cantidades'])) {
-    echo "entra";
     $cantidades = $_POST['cantidades'];
 
-    // Iterar sobre el arreglo de cantidades para actualizar la base de datos
+    // $cantidades es un arreglo asociativo, iteramos sobre el arreglo de cantidades para actualizar la base de datos
     foreach ($cantidades as $producto_id => $nueva_cantidad) {
-        $producto_id = intval($producto_id); // Sanitizar valores
+        $producto_id = intval($producto_id); 
         $nueva_cantidad = intval($nueva_cantidad);
 
         // Actualizar las cantidades en la tabla CarritoCompras
@@ -39,8 +38,17 @@ if (isset($_POST['cantidades']) && is_array($_POST['cantidades'])) {
                     $_SESSION['mensaje']='¡Algo salio mal!';
 
                 } else{
-                    header('Location: ../carrito.php?status=success');
-                    $_SESSION['mensaje']='¡Compra confirmada!';
+                    // Actualizamos el stock en la data base
+                    $sql_update = "UPDATE Productos SET cantidad_en_almacen = cantidad_en_almacen - $nueva_cantidad 
+                    WHERE id_producto = $producto_id";
+
+                    if(mysqli_query($conn, $sql_update)){
+                        header('Location: ../carrito.php?status=success');
+                        $_SESSION['mensaje']='¡Compra confirmada!';
+                    }else{
+                        header('Location: ../carrito.php?status=error');
+                        $_SESSION['mensaje']="no se actualizo la cantidad en la db";
+                    }
                 }
             }
         }
