@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- <link rel="stylesheet" href="fondo.css"> -->
+    <link rel="stylesheet" href="../../css/fondo.css">
+    <link rel="stylesheet" href="../../style.css">
     <title>Login</title>
 </head>
 
@@ -28,10 +29,10 @@
                         <a class="nav-link" href="../../php/compras/compras.php">Comprar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../html/contacto/contacto.html">Contacto</a>
+                        <a class="nav-link" href="../contacto/contacto.php">Contacto</a>
                     </li>
                     <li class="nav-item-">
-                        <a href="../../html/faq/faq.html" class="nav-link"> FAQ </a>
+                        <a href="../faq/faq.php" class="nav-link"> FAQ </a>
                     </li>
                     <?php if (isset($_SESSION['username'])) { ?>
                         <li class="nav-item active">
@@ -51,7 +52,7 @@
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
-            <h3 class="text-center mb-4">Login</h3>
+            <h1 class="text-center mb-4 texto-rosa" style="color: #FF4D80;">Login</h1>
 
             <?php if (isset($_GET['status']) && $_GET['status'] === 'error'): ?>
                 <div class="alert alert-danger" role="alert">
@@ -79,11 +80,11 @@
                 </div>
 
                 <div class="input-group">
-                    <a class="link" href="../../html/agregar_user/agregar_user.html"> ¿Eres nuevo? Crea una cuenta aquí </a>
+                    <a class="link" style="color: #FF4D80;" href="../../html/agregar_user/agregar_user.html"> ¿Eres nuevo? Crea una cuenta aquí </a>
                 </div>
                 <!-- Login Button -->
-                <div class="d-grid mt-3">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn button-rosa">Login</button>
                 </div>
             </form>
         </div>
