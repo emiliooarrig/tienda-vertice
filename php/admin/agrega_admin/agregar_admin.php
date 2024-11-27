@@ -6,7 +6,6 @@ if (isset($_SESSION['role']) != 'admin') {
 }
 ?>
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +16,7 @@ if (isset($_SESSION['role']) != 'admin') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../../style.css">
     <link rel="stylesheet" href="../../../css/fondo.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title> Agregar administrador </title>
 </head>
 
@@ -48,7 +48,16 @@ if (isset($_SESSION['role']) != 'admin') {
         </form>
     </div>
 
-
+    <?php if (isset($_GET['status']) && $_GET['status'] === 'error') {
+        $mensaje = $_SESSION['mensaje'];
+        echo "<script> Swal.fire({
+                title: '¡Error!',
+                text: '$mensaje',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })</script>";
+    }
+    ?>
 </body>
 
 </html>
