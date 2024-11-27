@@ -25,20 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (mysqli_query($conn, $query)) {
                 $_SESSION['mensaje'] = "Producto registrado exitosamente.";
+                header("Location: admin.php?status=success");
+
             } else {
-                $_SESSION['mensaje'] = "Error al registrar el producto: " . mysqli_error($conn);
+                $_SESSION['mensaje'] = "Error al registrar el producto: ";
+                header("Location: admin.php?status=error");
             }
         } else {
             $_SESSION['mensaje'] = "Error al subir la foto.";
+            header("Location: admin.php?status=error");
         }
     } else {
         $_SESSION['mensaje'] = "No se seleccionó una foto válida.";
+        header("Location: admin.php?status=error");
     }
-
-    echo $rutaDestino;
-    // Redirigir al panel de administración con mensaje
-    $url = 'admin.php'; 
-    header("Location: $url?exito=$exito&mensaje=$mensaje");
-    exit();
 }
 ?>
