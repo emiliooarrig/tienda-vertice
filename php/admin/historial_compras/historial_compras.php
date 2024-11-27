@@ -2,6 +2,11 @@
 
 include '../../config/conection.php';
 session_start();
+
+if (isset($_SESSION['role']) != 'admin') {
+    header('Location: ../login/login.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
