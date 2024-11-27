@@ -68,7 +68,7 @@
         <div class="row row-cols-1 row-cols-md-2">
 
             <div class="col">
-                <img src="../../img/support.png" alt="" class="w-75">
+                <img src="../../imagenes/support.png" alt="" class="w-75">
             </div>
 
             <div class="col d-flex flex-column align-items-center justify-content-center">

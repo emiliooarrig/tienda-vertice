@@ -9,6 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../css/footer.css">
     <title> FAQ </title>
 </head>
 
@@ -120,9 +121,9 @@
             </div>
             <div class="col mb-2">
                 <p class="mb-1">¡Nuestras redes sociales!</p>
-                <a href="#" class="text-white me-2"><i class="bi bi-linkedin"></i></a>
-                <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-twitter"></i></a>
             </div>
         </div>
     </div>
