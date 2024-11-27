@@ -9,6 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/animation.css">
     <title> Tiendita Honesta </title>
 </head>
@@ -75,7 +76,7 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col d-flex flex-column align-items-center text-center text-md-start">
-                <img src="img/vertice-logo.png" alt="Vertice Logo" class="img-fluid w-50 mb-3">
+                <img src="imagenes/vertice-logo.png" alt="Vertice Logo" class="img-fluid w-50 mb-3">
             </div>
 
             <div class="col d-flex align-items-center justify-content-center flex-column">
@@ -86,7 +87,7 @@
                     Recusandae eius aliquam molestias ea.
                 </p>
 
-                <a href="" class="btn button-rosa"> ¡Compra ahora! </a>
+                <a href="php/compras/compras.php" class="btn button-rosa"> ¡Compra ahora! </a>
             </div>
         </div>
     </div>
@@ -106,13 +107,13 @@
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/ofertas-carrusel/image.png" alt="Los Angeles" class="d-block w-75 mx-auto">
+                <img src="imagenes/ofertas-carrusel/image.png" alt="Los Angeles" class="d-block w-75 mx-auto">
             </div>
             <div class="carousel-item">
-                <img src="img/ofertas-carrusel/image.png" alt="Chicago" class="d-block w-75 mx-auto">
+                <img src="imagenes/ofertas-carrusel/image.png" alt="Chicago" class="d-block w-75 mx-auto">
             </div>
             <div class="carousel-item">
-                <img src="img/ofertas-carrusel/image.png" alt="New York" class="d-block w-75 mx-auto">
+                <img src="imagenes/ofertas-carrusel/image.png" alt="New York" class="d-block w-75 mx-auto">
             </div>
         </div>
 
@@ -132,17 +133,17 @@
         <div class="row row-cols-1 row-cols-md-3 justify-content-center">
             <div class="col text-center">
                 <h1 class="fs-3 mb-4">Dulces</h1>
-                <img src="img/tipos-productos/1.png" alt="" class="w-75 img-responsive hover-zoom">
+                <img src="imagenes/tipos-productos/1.png" alt="" class="w-75 img-responsive hover-zoom">
             </div>
 
             <div class="col text-center">
                 <h1 class="fs-3 mb-4">Merch del programa</h1>
-                <img src="img/tipos-productos/2.png" alt="" class="w-75 img-responsive hover-zoom">
+                <img src="imagenes/tipos-productos/2.png" alt="" class="w-75 img-responsive hover-zoom">
             </div>
 
             <div class="col text-center">
                 <h1 class="fs-3 mb-4">Eventos especiales</h1>
-                <img src="img/tipos-productos/3.png" alt="" class="w-75 img-responsive hover-zoom">
+                <img src="imagenes/tipos-productos/3.png" alt="" class="w-75 img-responsive hover-zoom">
             </div>
         </div>
     </div>
@@ -160,9 +161,9 @@
             </div>
             <div class="col mb-2">
                 <p class="mb-1">¡Nuestras redes sociales!</p>
-                <a href="#" class="text-white me-2"><i class="bi bi-linkedin"></i></a>
-                <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-twitter"></i></a>
             </div>
         </div>
     </div>
