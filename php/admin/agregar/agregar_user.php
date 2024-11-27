@@ -1,6 +1,7 @@
 <?php 
 
 require '../../config/conection.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitizar datos de entrada
@@ -16,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validar que las contraseñas coincidan
     if ($passwd !== $confirm_passwd) {
-        echo "<script>alert('Las contraseñas no coinciden');</script>";
-        exit();
+        header("Location: ../../agregar_user/agregar_user.php?status=error");
+        $_SESSION['mensaje'] = "Las contraseñas no coinciden. ";
     }
 
     // Verificar si el usuario ya existe
@@ -25,7 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $checkResult = mysqli_query($conn, $checkUserSQL);
 
     if (mysqli_num_rows($checkResult) > 0) {
-        header("Location: agregar_user.php?status=error&msg=El usuario ya existe");
+        header("Location: ../../agregar_user/agregar_user.php?status=error");
+        $_SESSION['mensaje'] = "Ya existe un usuario con ese nombre! ";
         exit();
     }
 
@@ -37,9 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     VALUES ('$user', '$email', '$hashedPasswd', '$date', '$tarjeta', '$cp')";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: login.php?status=success");
+        header("Location: ../../login/login.php?status=success");
     } else {
-        header("Location: agregar_user.php?status=error");
+        header("Location: ../../agregar_user/agregar_user.php?status=error");
+        $_SESSION['mensaje'] = "No se pudo agregar el usuair@";
     }
 }
 ?>
