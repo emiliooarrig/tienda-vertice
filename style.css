@@ -9,6 +9,17 @@
     color: #fff;
     padding: 15px;
     border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+
+}
+
+.button-rosa:hover {
+    background-color: #E4005C; 
+    color: #fff; 
+    transform: scale(1.05); 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
 }
 
 .icon-amarillo{
