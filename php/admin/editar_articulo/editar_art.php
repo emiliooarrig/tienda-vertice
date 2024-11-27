@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
         $foto = $_FILES['foto'];
         $nombreFoto = basename($foto['name']); // Solo el nombre del archivo
-        $rutaDestino = '../../../img/productos/' . $nombreFoto;
+        $rutaDestino = '../../../img/' . $nombreFoto;
 
         // Mover el archivo al directorio de imagenes
         if (move_uploaded_file($foto['tmp_name'], $rutaDestino)) {
