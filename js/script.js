@@ -16,7 +16,7 @@ function confirmDelete(producto_id) {
 }
 
 
-function solicitarLogin(){
+function solicitarLogin() {
     Swal.fire({
         title: 'Atencion',
         text: `Inicia sesion antes de agregar productos`,
