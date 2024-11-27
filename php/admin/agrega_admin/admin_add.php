@@ -1,6 +1,7 @@
 <?php
 
 include '../../config/conection.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $_POST['usuario'];
@@ -17,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Verificamos que no exista otro usuario con ese user 
         if(mysqli_num_rows($checkResult) > 0 || mysqli_num_rows($checkResultAdmin) > 0){
-            echo "ya existe ese usuario";
+            $_SESSION['mensaje'] = "¡Ya existe ese usuario! ";
+            header("location: agregar_admin.php?status=error");
             
         }else{
             $hashedPasswd = password_hash($passwd, PASSWORD_BCRYPT);
@@ -25,12 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
             //Insertamos los datos en la tabla 
             if (mysqli_query($conn, $sql)) {
-                echo "insertado exitosamente";
+                $_SESSION['mensaje'] = "Admin agregado con exito";
+                header("location: ../admin.php?status=success");
             } else {
-                echo "no se pudo insertar";
+                $_SESSION['mensaje'] = "Algo salio mal";
+                header("location: ../admin.php?status=error");
             }
         }
     } else {
-        echo "las contraseñas no son iguales. ";
+        $_SESSION['mensaje'] = "Las contraseñas no coinciden. ";
+        header("location: agregar_admin.php?status=error");
     }
 }
