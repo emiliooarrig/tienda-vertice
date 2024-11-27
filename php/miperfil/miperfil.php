@@ -28,8 +28,8 @@ if (!isset($_SESSION['username'])) {
     <div class="container-fluid">
         <div class="row vh-100">
             <!-- Columna izquierda: Panel del administrador -->
-            <div class="col-md-3 p-4 rounded text-center mh-100" style="background-color: #FF4D80;">
-                <h1 class="fs-4 text-light">Bienvenid@, <span class="text-primary"><?php echo $_SESSION['username']; ?></span></h1>
+            <div class="col-md-3 p-4 text-center mh-100" style="background-color: #FF4D80;">
+                <h1 class="fs-4 text-light">Bienvenid@, <span style="color: #FFD966;"><?php echo $_SESSION['username']; ?></span></h1>
                 <img src="../../img/user.png" alt="" class="img img-fluid w-50">
                 <div class="row row-cols-1 row-cols-md-1 justify-content-center">
                     <?php
