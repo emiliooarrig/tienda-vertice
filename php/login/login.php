@@ -66,6 +66,12 @@
                 </div>            
             <?php endif; ?>
 
+            <?php if (isset($_GET['status']) && $_GET['status'] === 'closed'): ?>
+                <div class="alert alert-success" role="alert">
+                    ¡Sesion cerrada con exito!
+                </div>            
+            <?php endif; ?>
+
             <form action="validar_user.php" method="POST">
                 <!-- Username Field -->
                 <div class="mb-3 input-group">
@@ -80,7 +86,7 @@
                 </div>
 
                 <div class="input-group">
-                    <a class="link" style="color: #FF4D80;" href="../../html/agregar_user/agregar_user.html"> ¿Eres nuevo? Crea una cuenta aquí </a>
+                    <a class="link" style="color: #FF4D80;" href="../agregar_user/agregar_user.php"> ¿Eres nuevo? Crea una cuenta aquí </a>
                 </div>
                 <!-- Login Button -->
                 <div class="text-center mt-3">
