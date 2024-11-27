@@ -48,6 +48,23 @@ if (isset($_SESSION['role']) != 'admin') {
         </form>
     </div>
 
+    <?php if (isset($_GET['status']) && $_GET['status'] === 'success') {
+        $mensaje = $_SESSION['mensaje'];
+        echo "<script>
+                Swal.fire({
+                    title: 'Exito',
+                    text: '$mensaje',
+                    icon: 'success',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Ok'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '../admin.php';
+                    }
+                });
+            </script>";
+    } ?>
+
     <?php if (isset($_GET['status']) && $_GET['status'] === 'error') {
         $mensaje = $_SESSION['mensaje'];
         echo "<script> Swal.fire({
