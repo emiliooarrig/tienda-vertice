@@ -74,34 +74,40 @@ session_start();
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    // Variables para los datos del artículo
                     $nombre = $row['nombre'];
                     $id = $row['id_producto'];
                     $precio = $row['precio'];
+                    $descripcion = $row['descripcion'];
                     $cantidad = $row['cantidad_en_almacen'];
             ?>
-                    <!-- Card de Bootstrap -->
-                    <div class="col">
+                    <div class="col ">
                         <div class="card h-100">
-                            <img src="../../img/productos/<?php echo $row['fotos']; ?>" class="card-img-top img-fluid w-50"
+                            <img src="../../img/<?php echo $row['fotos']; ?>" class="card-img-top img-fluid mx-auto"
                                 alt=" <?php echo $row['nombre']; ?>">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $nombre; ?></h5> <!-- Título -->
+                                <h5 class="card-title"><?php echo $nombre; ?></h5> 
+                                <p class="card-text"> <?php echo $descripcion; ?> </p>
                                 <p class="card-text"> <span class="fw-bold"> Precio: </span> $<?php echo $precio; ?></p>
                                 <p class="card-text"> <span class="fw-bold"> Stock: </span> <?php echo $cantidad; ?></p>
                             </div>
                             <div class="card-footer justify-content-between">
                                 <?php
                                 if ($_SESSION['username']) { ?>
-                                    <a href="../agregar_carrito/agregar_carrito.php?producto_id=<?php echo $id; ?>&cantidad=1" class="btn btn-primary"> Añadir al carrito <i class="bi bi-cart-plus-fill"></i> </a>
-                                <?php } else { ?>
-                                    <a href="#" onclick="solicitarLogin()" class="btn btn-primary"> Añadir al carrito <i class="bi bi-cart-plus-fill"></i> </a>
-                                <?php } ?>
+                                    <?php if($cantidad == 0) {?>
+                                        <a href="#" class="btn btn-primary disabled" aria-disabled="true"> Sin stock <i class="bi bi-cart-plus-fill"></i> </a>
+                                        <?php } else { ?>
+                                        <a href="../agregar_carrito/agregar_carrito.php?producto_id=<?php echo $id; ?>&cantidad=1" class="btn btn-primary"> Añadir al carrito <i class="bi bi-cart-plus-fill"></i> </a>
+                                    <?php } ?>
+                                <?php } elseif($cantidad == 0) { ?>
+                                    <a href="#" class="btn btn-primary disabled" aria-disabled="true"> Sin stock <i class="bi bi-cart-plus-fill"></i> </a>
+                                    <?php } else{ ?>                                        
+                                        <a href="#" onclick="solicitarLogin()" class="btn btn-primary"> Añadir al carrito <i class="bi bi-cart-plus-fill"></i> </a>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
             <?php
-                } // Fin del while
+                } 
             } else {
                 echo "<h1> No se encontraron artículos :( </h1>";
             }
@@ -109,6 +115,7 @@ session_start();
         </div>
 
         <script src="../../js/script.js"></script>
+        
         <?php if (isset($_GET['status']) && $_GET['status'] === 'success') {
             echo "<script> Swal.fire({
                 title: '¡Exitoso!',
