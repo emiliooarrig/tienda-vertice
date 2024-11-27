@@ -43,12 +43,12 @@ $mensaje='';
                                 Mi cuenta <i class="bi bi-person-fill-check"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="miperfil/miperfil.php"> Mi perfil </a></li>
+                                <li><a class="dropdown-item" href="miperfil/miperfil.php"> Mi perfil <i class="bi bi-person-circle"></i></a></li>
                                 <li><a class="dropdown-item" href="#"> Mi carrito <i class="bi bi-cart"></i></a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="config/logout.php"> Cerrar sesión </a></li>
+                                <li><a class="dropdown-item" href="config/logout.php"> Cerrar sesión <i class="bi bi-x-lg"></i> </a></li>
                             </ul>
                         </li>
                     <?php } else { ?>
