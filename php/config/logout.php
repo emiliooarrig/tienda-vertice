@@ -8,5 +8,5 @@ session_unset();
 session_destroy();
 
 // Redireccionar al usuario a la página de login o inicio
-header("Location: ../login/login.php");
+header("Location: ../login/login.php?status=closed");
 exit();
