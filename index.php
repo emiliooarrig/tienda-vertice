@@ -82,9 +82,9 @@
             <div class="col d-flex align-items-center justify-content-center flex-column">
                 <h1 class="h1">Sobre la tienda</h1>
                 <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum repellat, consequatur amet,
-                    quaerat in impedit aliquid ratione fugit, non neque accusamus assumenda aperiam dignissimos ut.
-                    Recusandae eius aliquam molestias ea.
+                Bienvenido a Tiendita Honesta, tu lugar de confianza para disfrutar de los dulces más deliciosos y variados. En nuestra 
+                tienda en línea encontrarás una selección de golosinas, chocolates, galletas y mucho más, perfectos para cualquier ocasión. 
+                ¡Haz tu pedido y endulza tu día con lo mejor de Tiendita Honesta!
                 </p>
 
                 <a href="php/compras/compras.php" class="btn button-rosa"> ¡Compra ahora! </a>
@@ -157,7 +157,7 @@
             </div>
             <div class="col mb-2">
                 <p class="mb-1">¿Problemas con tu pedido? Haz click aquí</p>
-                <a href="btn" class="btn button-amarillo"> Problemas</a>
+                <a href="php/contacto/contacto.php" class="btn button-amarillo"> Problemas</a>
             </div>
             <div class="col mb-2">
                 <p class="mb-1">¡Nuestras redes sociales!</p>
