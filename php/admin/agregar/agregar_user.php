@@ -16,33 +16,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // Validar que las contraseñas coincidan
-    if ($passwd !== $confirm_passwd) {
-        header("Location: ../../agregar_user/agregar_user.php?status=error");
+    if ($passwd != $confirm_passwd) {
         $_SESSION['mensaje'] = "Las contraseñas no coinciden. ";
+        header("Location: ../../agregar_user/agregar_user.php?status=error");
+        exit();
     }
 
     // Verificar si el usuario ya existe
     $checkUserSQL = "SELECT * FROM Usuarios WHERE nombre_usuario = '$user'";
+    $checkAdminSQL = "SELECT * FROM Administradores WHERE user_admin = '$user'";
+    $checkAdmin = mysqli_query($conn, $checkAdminSQL);
     $checkResult = mysqli_query($conn, $checkUserSQL);
 
-    if (mysqli_num_rows($checkResult) > 0) {
+    if (mysqli_num_rows($checkResult) > 0 || mysqli_num_rows($checkAdmin) > 0) {
+        $_SESSION['mensaje'] = "¡Ya existe un usuario con ese nombre! ";
         header("Location: ../../agregar_user/agregar_user.php?status=error");
-        $_SESSION['mensaje'] = "Ya existe un usuario con ese nombre! ";
         exit();
     }
 
-    // Encriptar la contraseña
     $hashedPasswd = password_hash($passwd, PASSWORD_BCRYPT);
 
-    // Insertar el nuevo usuario
     $sql = "INSERT INTO Usuarios (nombre_usuario, correo_electronico, contrasena, fecha_nacimiento, numero_tarjeta_bancaria, direccion_postal) 
     VALUES ('$user', '$email', '$hashedPasswd', '$date', '$tarjeta', '$cp')";
 
     if (mysqli_query($conn, $sql)) {
         header("Location: ../../login/login.php?status=success");
     } else {
-        header("Location: ../../agregar_user/agregar_user.php?status=error");
         $_SESSION['mensaje'] = "No se pudo agregar el usuair@";
+        header("Location: ../../agregar_user/agregar_user.php?status=error");
     }
 }
 ?>
