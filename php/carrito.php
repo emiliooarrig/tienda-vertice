@@ -109,7 +109,6 @@ $mensaje='';
                                     $maximo = mysqli_fetch_assoc(mysqli_query($conn, $sql_maximo_stock));
                     ?>
                                     <tr>
-                                        <td><?php echo $producto_id; ?></td>
                                         <td><?php echo $nombre_producto; ?></td>
                                         <td>
                                             <input type="number"
