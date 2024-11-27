@@ -13,6 +13,7 @@ $mensaje='';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/fondo.css">
     <title> Carrito </title>
 </head>
 
@@ -61,8 +62,12 @@ $mensaje='';
         </div>
     </nav>
 
-    <div class="container">
-        <form action="compras/confirmar_compra.php" method="POST">
+    <div class="container-fluid text-center p-3" style="background-color: #FF4D80;">
+        <h1 class="text-light"> Mi carrito de compras </h1>
+    </div>
+
+    <div class="container mt-5">
+        <form action="compras/confirmar_compra.php" method="POST" class="bg-light p-3 rounded">
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -89,6 +94,7 @@ $mensaje='';
                             INNER JOIN Productos p ON c.producto_id = p.id_producto
                             WHERE c.usuario_id = $id_user";
 
+
                         $result = mysqli_query($conn, $sql);
                         if ($result) {
                             if (mysqli_num_rows($result) > 0) {
@@ -98,6 +104,9 @@ $mensaje='';
                                     $nombre_producto = $row['nombre_producto'];
                                     $cantidad = $row['cantidad'];
                                     $total = $row['total'];
+
+                                    $sql_maximo_stock = "SELECT cantidad_en_almacen FROM Productos WHERE id_producto=$producto_id";
+                                    $maximo = mysqli_fetch_assoc(mysqli_query($conn, $sql_maximo_stock));
                     ?>
                                     <tr>
                                         <td><?php echo $producto_id; ?></td>
@@ -106,7 +115,7 @@ $mensaje='';
                                             <input type="number"
                                                 name="cantidades[<?php echo $producto_id; ?>]"
                                                 value="<?php echo $cantidad; ?>"
-                                                min="1"
+                                                min="1" max="<?php echo $maximo['cantidad_en_almacen']?>"
                                                 class="form-control cantidad-input"
                                                 style="width: 80px;">
                                         </td>
@@ -160,7 +169,6 @@ $mensaje='';
         ?>
 
     </div>
-    <!-- Script para validar que en los inputs no haya numeros negativos  -->
     <script>
         
         const cantidadInputs = document.querySelectorAll('.cantidad-input');
@@ -168,11 +176,18 @@ $mensaje='';
         cantidadInputs.forEach(input => {
             input.addEventListener('input', () => {
                 if (input.value <= 0 || isNaN(input.value)) {
-                    // Mostrar SweetAlert si la cantidad no es válida
                     Swal.fire({
                         icon: 'error',
                         title: 'Cantidad inválida',
                         text: 'La cantidad debe ser mayor a 0.',
+                        confirmButtonText: 'Aceptar'
+                    });
+                    input.value = 1;
+                } else if(input.value >= <?php echo $maximo['cantidad_en_almacen']?>){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Cantidad inválida',
+                        text: 'La cantidad debe ser menor al stock.',
                         confirmButtonText: 'Aceptar'
                     });
                     input.value = 1;
