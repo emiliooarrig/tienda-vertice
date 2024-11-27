@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../css/footer.css">
     <title> Contacto </title>
 </head>
 
@@ -62,25 +64,28 @@
         <h1 class="text-light"> ¿Como contactarnos? </h1>
     </div>
 
-    <div class="container">
+    <div class="container mt-4">
         <div class="row row-cols-1 row-cols-md-2">
 
             <div class="col">
                 <img src="../../img/support.png" alt="" class="w-75">
             </div>
 
-            <div class="col d-flex align-items-center justify-content-center">
+            <div class="col d-flex flex-column align-items-center justify-content-center">
+                <h1> ¿Tienes una duda o necesitas ayuda? estamos aquí para ti</h1>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima eos odit aut, iusto nisi quas,
-                    magnam dolorum repudiandae unde neque vel maxime sequi et rerum ducimus veniam excepturi asperiores
-                    illum.
-                </p>
+                    Escríbenos a <span class="text-primary"> verticemexico@anahuac.mx </span> con cualquier duda,
+                    comentario o sugerencia, y con gusto te responderemos en menos de 24 horas.
+                    Nuestro equipo está disponible para ayudarte con cualquier detalle relacionado con
+                    tus pedidos, el proceso de compra o cualquier otra consulta que tengas.
+
+                <h6> ¡Tu opinión es importante para nosotros! </h6>
             </div>
         </div>
 
     </div>
 
-    <div class="container-fluid fixed-bottom text-center text-white py-4 mt-5 footer" style="background-color: #FF4D80; position:absolute">
+    <div class="container-fluid text-center footer text-white py-3 mt-5" style="background-color: #FF4D80;">
         <h1 class="fs-5 mb-3">Vertice Mexico. Todos los derechos reservados.</h1>
         <div class="row row-cols-1 row-cols-md-3">
             <div class="col mb-2">
@@ -88,13 +93,13 @@
             </div>
             <div class="col mb-2">
                 <p class="mb-1">¿Problemas con tu pedido? Haz click aquí</p>
-                <a href="btn" class="btn button-amarillo"> Problemas</a>
+                <a href="#" class="btn button-amarillo"> Problemas</a>
             </div>
             <div class="col mb-2">
                 <p class="mb-1">¡Nuestras redes sociales!</p>
-                <a href="#" class="text-white me-2"><i class="bi bi-linkedin"></i></a>
-                <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="icon me-2"><i class="bi bi-twitter"></i></a>
             </div>
         </div>
     </div>
