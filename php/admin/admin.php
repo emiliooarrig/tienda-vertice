@@ -3,6 +3,8 @@ require '../config/conection.php';
 session_start();
 
 $result = mysqli_query($conn, "SELECT * FROM Productos;");
+$numeroProds = mysqli_query($conn, "SELECT COUNT(*) AS numero_prods FROM Productos");
+$numero = mysqli_fetch_assoc($numeroProds);
 $mensaje = '';
 
 if (isset($_SESSION['role']) != 'admin') {
@@ -27,11 +29,12 @@ if (isset($_SESSION['role']) != 'admin') {
 <body>
 
     <div class="container-fluid">
-        <div class="row vh-100">
+        <div class="row mh-100">
             <!-- Columna izquierda: Panel del administrador -->
-            <div class="col-md-3 p-4 text-center h-100" style="background-color: #FF4D80;">
+            <div class="col-md-3 p-4 text-center" style="background-color: #FF4D80;">
                 <h1 class="fs-4 text-light">Bienvenid@, <span style="color: #FFD966;"><?php echo $_SESSION['username']; ?></span></h1>
-                <img src="../../img/user.png" alt="" class="img img-fluid w-50">
+                <img src="../../imagenes/user.png" alt="" class="img img-fluid w-50">
+                <h4> Productos en catalogo: <?php echo $numero['numero_prods']; ?></h4>
                 <div class="row row-cols-1 row-cols-md-2 justify-content-center">
                     <div class="col">
                         <a href="agregar/agregar_art.php" class="btn btn-success btn-block my-2">Agregar artículos</a>
