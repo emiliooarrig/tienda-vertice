@@ -1,0 +1,29 @@
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.col .icon{
+    color: #fff;
+    font-size: 20px;
+    transition: all 0.3s ease;
+
+}
+
+.col .icon:hover{
+    color: #FFC300;
+    font-size: 25px;
+    transition: all 0.3s ease;
+    transform: rotate(10deg);
+
+}
+
+@media (max-width: 600px){
+    .footer{
+        position:relative;
+    }
+}
