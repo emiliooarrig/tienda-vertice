@@ -71,7 +71,7 @@ $mensaje='';
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
-                        <th>Id producto</th>
+                        <!-- <th>Id producto</th> -->
                         <th>Nombre</th>
                         <th>Cantidad</th>
                         <th>Total</th>
