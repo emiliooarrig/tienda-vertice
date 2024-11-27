@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (isset($_SESSION['role']) != 'admin') {
+    header('Location: ../../login/login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +19,7 @@
 <body>
     <div class="container bg-light p-5 mt-5">
         <h1 class="text-center mb-4 texto-rosa" style="color: #FF4D80;"> Registrar Producto </h1>
-        <form action="../guardar.php" method="post" enctype="multipart/form-data" class="bg-white p-4 shadow-lg">
+        <form action="../guardar.php" method="post" class="bg-white p-4 shadow-lg" enctype="multipart/form-data">
             <!-- Nombre -->
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre del Producto</label>

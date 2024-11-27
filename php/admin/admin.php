@@ -59,7 +59,7 @@ if (isset($_SESSION['role']) != 'admin') {
                         <div class="col">
                             <div class="card h-100">
                                 <img
-                                    src="../../img/productos/<?php echo $row['fotos']; ?>"
+                                    src="../../img/<?php echo $row['fotos']; ?>"
                                     class="card-img-top img-fluid w-50"
                                     alt=" <?php echo $row['nombre']; ?>">
                                 <div class="card-body">

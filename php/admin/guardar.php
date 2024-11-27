@@ -2,7 +2,6 @@
 require '../config/conection.php';
 
 $mensaje = '';
-$exito = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
@@ -15,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verificar si se ha subido un archivo de imagen
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
         $foto = $_FILES['foto'];
-        $nombreFoto = basename($foto['name']); // Solo el nombre del archivo
-        $rutaDestino = '../../img/productos/' . $nombreFoto;
+        $nombreFoto = basename($foto['name']);
+        $rutaDestino = "../../img/" . $nombreFoto;
 
         // Mover el archivo al directorio especificado
         if (move_uploaded_file($foto['tmp_name'], $rutaDestino)) {
@@ -25,22 +24,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                       VALUES ('$nombre', '$descripcion', '$nombreFoto', '$precio', '$cantidad', '$fabricante', '$origen')";
 
             if (mysqli_query($conn, $query)) {
-                $mensaje = "Producto registrado exitosamente.";
-                $exito = true;
+                $_SESSION['mensaje'] = "Producto registrado exitosamente.";
             } else {
-                $mensaje = "Error al registrar el producto: " . mysqli_error($conn);
+                $_SESSION['mensaje'] = "Error al registrar el producto: " . mysqli_error($conn);
             }
         } else {
-            $mensaje = "Error al subir la foto.";
+            $_SESSION['mensaje'] = "Error al subir la foto.";
         }
     } else {
-        $mensaje = "No se seleccionó una foto válida.";
+        $_SESSION['mensaje'] = "No se seleccionó una foto válida.";
     }
 
+    echo $rutaDestino;
     // Redirigir al panel de administración con mensaje
-    $url = 'admin.php'; // Cambia esta URL por la de tu panel de administrador
-    header("Location: $url?exito=$exito&mensaje=" . urlencode($mensaje));
+    $url = 'admin.php'; 
+    header("Location: $url?exito=$exito&mensaje=$mensaje");
     exit();
 }
-
-
+?>
